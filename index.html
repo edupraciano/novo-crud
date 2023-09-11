@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+  <input id="meuInput" type="text">
+  <button onclick="disparaAoClicar()">Dispara ao clicar</button>
+</body>
+
+
+<script>
+  var minha_url =
+    "https://script.google.com/macros/s/AKfycbyqBBY5WssDrbBSFxZQ2OyHeV64IDYU41ELChwc13YYyr8x89EFrK6K-TG89sUk9SGa/exec";
+
+  function disparaAoClicar() {
+    var dados = document.getElementById('meuInput').value;
+
+    $.ajax({
+      type: "POST",
+      data: {
+        dados: dados,
+      },
+      url: minha_url,
+    });
+  }
+</script>
+
+</html>

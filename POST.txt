@@ -1,0 +1,7 @@
+POST
+
+function doPost(e) {
+  var SS = SpreadsheetApp.openById('1kWX6wvA1rVyzMFRRo6O1ikbksvN2gMvdrntv09nhCY8');
+  var main = SS.getSheetByName('main');
+  main.getRange('A1').setValue(e.parameters.dados);
+}
