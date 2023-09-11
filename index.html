@@ -7,22 +7,49 @@
 </head>
 
 <body>
-  <input id="meuInput" type="text">
-  <button onclick="disparaAoClicar()">Dispara ao clicar</button>
+  <h2>Cadastro de Funcionário</h2>
+  <label for="idDoFuncionario">ID</label>
+  <br>
+  <input id="idDoFuncionario" type="text">
+  <br><br>
+  <label for="nomeDoFuncionario">NOME</label>
+  <br>
+  <input id="nomeDoFuncionario" type="text">
+  <br><br>
+  <label for="cargoDoFuncionario">CARGO</label>
+  <br>
+  <input id="cargoDoFuncionario" type="text">
+  <br><br>
+  <label for="salarioDoFuncionario">SALÁRIO</label>
+  <br>
+  <input id="salarioDoFuncionario" type="text">
+  <br><br>
+  <button onclick="disparaAoClicar()">LANÇAR</button>
 </body>
 
 
 <script>
   var minha_url =
-    "https://script.google.com/macros/s/AKfycbyqBBY5WssDrbBSFxZQ2OyHeV64IDYU41ELChwc13YYyr8x89EFrK6K-TG89sUk9SGa/exec";
+    "https://script.google.com/macros/s/AKfycbwHDxOkg-rTPLXeHe90gUIYEm_m52gRWjy-zkmkgCxju-19EDJzUGdE9fJZSACUDjSB/exec";
 
   function disparaAoClicar() {
-    var dados = document.getElementById('meuInput').value;
+    var idDoFuncionario = document.getElementById('idDoFuncionario').value;
+    var nomeDoFuncionario = document.getElementById('nomeDoFuncionario').value;
+    var cargoDoFuncionario = document.getElementById('cargoDoFuncionario').value;
+    var salarioDoFuncionario = document.getElementById('salarioDoFuncionario').value;
+
+    console.log(idDoFuncionario);
+    console.log(nomeDoFuncionario);
+    console.log(cargoDoFuncionario);
+    console.log(salarioDoFuncionario);
 
     $.ajax({
       type: "POST",
       data: {
-        dados: dados,
+        idDoFuncionario: idDoFuncionario,
+        nomeDoFuncionario: nomeDoFuncionario,
+        cargoDoFuncionario: cargoDoFuncionario,
+        salarioDoFuncionario: salarioDoFuncionario,
       },
       url: minha_url,
     });
