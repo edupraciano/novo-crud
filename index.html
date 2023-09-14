@@ -80,7 +80,7 @@
 
 <script>
   var minhaUrl =
-    "https://script.google.com/macros/s/AKfycbwezQc-oksFoZHEm94OR8MlNRONqRuN8rVu57h5ywHCAjsOrJa-JxPPoLbBJP6Bqcc/exec";
+    "https://script.google.com/macros/s/AKfycbxTWJu3nx8BV4ddXUReZqAZGTbadLXmkOIZwOrjsXS9Tz09G9UnR-VdWjKQzETn46ER/exec";
 
   function abreCadastroDeFuncionarios() {
     document.getElementById('formularioDeCadastroDeFuncionario').style.display = 'block';
@@ -115,6 +115,7 @@
       document.getElementById('cargoDoFuncionario').value = "";
       document.getElementById('salarioDoFuncionario').value = "";
       alert("Funcionário Cadastrado Com Sucesso!")
+      location.reload();
     });
   }
 
@@ -127,6 +128,14 @@
       },
       url: minhaUrl,
     }).done(function (data) {
+
+      try {
+        $('#example').DataTable().clear();
+        $('#example').DataTable().destroy();
+      } catch (e) {
+        console.log(e);
+      }
+
       var data = JSON.parse(data);
       $('#example').DataTable({
         data: data,
@@ -134,6 +143,19 @@
         scrollY: 200,
         scrollCollapse: true,
         scroller: true,
+      });
+
+      // ADICIONANDO UM OUVINTE
+      let table = new DataTable('#example');
+
+      table.on('click', 'tbody tr', function () {
+        abreCadastroDeFuncionarios();
+        let data = table.row(this).data();
+
+        document.getElementById('idDoFuncionario').value = data[0];
+        document.getElementById('nomeDoFuncionario').value = data[1];
+        document.getElementById('cargoDoFuncionario').value = data[2];
+        document.getElementById('salarioDoFuncionario').value = data[3];
       });
     });
   }
