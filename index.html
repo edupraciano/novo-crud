@@ -13,47 +13,95 @@
 </head>
 
 <body>
+  <div id="container_externo">
 
-  <div id="menuDeNavegacao">
-    <button onclick="abreCadastroDeFuncionarios()">Formulário de Cadastro</button>
-    <button onclick="abreTabelaDeFuncionarios()">Tabela de Funcionário</button>
-  </div>
+    <div id="div_logout">
+      <p>Bem Vindo Usuário</p>
+      <button>Sair</button>
+    </div>
 
-  <div id="formularioDeCadastroDeFuncionario">
-    <h2>Cadastro de Funcionário</h2>
-    <label for="idDoFuncionario">ID</label>
-    <br>
-    <input id="idDoFuncionario" type="text" disabled>
-    <br><br>
-    <label for="nomeDoFuncionario">NOME</label>
-    <br>
-    <input id="nomeDoFuncionario" type="text">
-    <br><br>
-    <label for="cargoDoFuncionario">CARGO</label>
-    <br>
-    <input id="cargoDoFuncionario" type="text">
-    <br><br>
-    <label for="salarioDoFuncionario">SALÁRIO</label>
-    <br>
-    <input id="salarioDoFuncionario" type="text">
-    <br><br>
-    <button onclick="disparaAoClicar()">LANÇAR</button>
-  </div>
+    <div id="menuDeNavegacao">
+      <button onclick="abre_cadastro_de_estabelecimento()">Formulário de Cadastro</button>
+      <button onclick="abre_tabela_de_estabelecimentos()">Tabela de Funcionário</button>
+      <button onclick="()">Alterar Senha</button>
+    </div>
 
-  <div id="divTabelaDeFuncionarios">
-    <h2>Tabela de Funcionários</h2>
-    <table id="example" class="display nowrap" style="width:100%">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Cargo</th>
-          <th>Salário</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
+    <div id="caixa_de_titulo1">
+      <h2>Cadastro de Estabelecimentos</h2>
+    </div>
 
+    <div id="formulario_de_cadastro">
+
+      <div id="box1">
+        <label for="id_do_estabelecimento">ID</label>
+        <br>
+        <input id="id_do_estabelecimento" type="text" disabled>
+        <br><br>
+        <label for="nome_do_estabelecimento">Estabelecimento</label>
+        <br>
+        <input id="nome_do_estabelecimento" type="text">
+        <br><br>
+        <label for="produto">Produto</label>
+        <br>
+        <input id="produto" type="text">
+        <br><br>
+        <label for="chave">Chave</label>
+        <br>
+        <input id="chave" type="text">
+      </div>
+
+
+      <div id="box2">
+
+        <label for="maquina">Máquina</label>
+        <br>
+        <input id="maquina" type="text">
+        <br><br>
+        <label for="endereco">Endereço</label>
+        <br>
+        <input id="endereco" type="text">
+        <br><br>
+        <label for="responsavel">Responsável</label>
+        <br>
+        <input id="responsavel" type="text">
+        <br><br>
+        <label for="contato">Contato</label>
+        <br>
+        <input id="contato" type="text">
+
+      </div>
+
+    </div>
+
+    <div id="btn_cadastro">
+      <button class="btn-green" onclick="disparaAoClicar()">LANÇAR</button>
+      <button class="btn-red" onclick="excluirEsteId()">EXCLUIR</button>
+      <button class="btn-orange" onclick="()">ALTERAR</button>
+    </div>
+
+    <div id="caixa_de_titulo2">
+      <h2>Tabela de Estabelecimentos</h2>
+    </div>
+
+    <div id="div_abre_tabela_de_estabelecimentos">
+
+      <table id="example" class="display nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Estabelecimento</th>
+            <th>Produto</th>
+            <th>Chave</th>
+            <th>Máquina</th>
+            <th>Endereço</th>
+            <th>Responsável</th>
+            <th>Contato</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+  </div> <!-- fim da Div Container_externo"-->
 </body>
 
 <style>
@@ -64,57 +112,262 @@
   }
 
   body {
-    margin: 20px;
-    padding: 20px;
-    background-color: #dffaff;
+    margin: 0 auto;
+    padding: 2%;
+    background-color: #ffffff;
+    /* overflow: hidden; */
   }
 
-  #formularioDeCadastroDeFuncionario {
+  input {
+    margin-top: 0.3em;
+    padding: 0.5em;
+    width: 100%;
+    height: 2em;
+    font-size: 1em;
+  }
+
+  #container_externo {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    width: 100%;
+    padding: 2em;
+    background-color: #e6feffd0;
+    box-shadow: 0px 0px 10px rgba(11, 2, 43, 0.5);
+    border-radius: 10px;
+    justify-content: center;
+  }
+
+  #div_logout {
+    /* background-color: #b42d34; */
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+
+  }
+
+  #div_logout>p {
+    font-size: 1.5em;
+    color: #000;
+  }
+
+  #div_logout>button {
+    font-size: 1em;
+    background-color: rgb(148, 57, 252);
+    color: white;
+    padding: 0.5em;
+    cursor: pointer;
+    width: 8rem;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+  }
+
+  #menuDeNavegacao {
+    /* background-color: #67db31; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 auto;
+    margin: 1em auto;
+  }
+
+  #menuDeNavegacao>button {
+    font-size: 1em;
+    background-color: rgb(44, 46, 44);
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    cursor: pointer;
+    width: 13rem;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+  }
+
+  #menuDeNavegacao>button:hover {
+    background-color: rgb(65, 65, 65);
+    transition: 200ms;
+  }
+
+
+  #caixa_de_titulo1 {
+    display: none;
+    text-align: center;
+    color: #fff;
+    margin: 1%;
+    margin-top: 1.5em;
+    color: #000;
+  }
+
+
+  #formulario_de_cadastro {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -20px;
+    /* background-color: #31c2db; */
+    padding: 1em;
+    width: 80%;
+    margin: 0 auto;
+
+  }
+
+  #box1 {
+    /* background-color: #b2dd9f; */
+    width: 50%;
+    padding: 1em;
+
+  }
+
+  #box1>label {
+    font-weight: bold;
+    margin-left: 0.5em;
+  }
+
+  #box2 {
+    /* background-color: #b3a3d8; */
+    width: 50%;
+    padding: 1em;
+
+  }
+
+  #box2>label {
+    font-weight: bold;
+    margin-left: 0.5em;
+  }
+
+  #btn_cadastro {
+    /* background-color: grey; */
+    display: flex;
+    position: relative;
+    top: -20px;
+    justify-content: center;
+    text-align: center;
+    padding: 1%;
+  }
+
+  .btn-green {
+    background-color: green;
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    cursor: pointer;
+    width: 8rem;
+    font-size: 1.1em;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+  }
+
+  .btn-green:hover {
+    background-color: rgb(7, 143, 7);
+    transition: 200ms;
+  }
+
+  .btn-red {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    margin: 0.5em;
+    cursor: pointer;
+    width: 8rem;
+    font-size: 1.1em;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+  }
+
+  .btn-red:hover {
+    background-color: rgb(250, 34, 34);
+    transition: 200ms;
+  }
+
+  .btn-orange {
+    background-color: rgb(235, 138, 13);
+    color: white;
+    padding: 0 0.5em;
+    margin: 0.5em;
+    cursor: pointer;
+    width: 8rem;
+    font-size: 1.1em;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+  }
+
+  .btn-orange:hover {
+    background-color: rgb(248, 159, 42);
+    transition: 200ms;
+  }
+
+  #div_abre_tabela_de_estabelecimentos {
     display: none;
   }
 
-  #divTabelaDeFuncionarios {
+  #caixa_de_titulo2 {
     display: none;
+    text-align: center;
+    color: #fff;
+    margin: 1%;
+    margin-top: 1.5em;
+    color: #000;
   }
 </style>
 
 <script>
   var minhaUrl =
-    "https://script.google.com/macros/s/AKfycbxTWJu3nx8BV4ddXUReZqAZGTbadLXmkOIZwOrjsXS9Tz09G9UnR-VdWjKQzETn46ER/exec";
+    "https://script.google.com/macros/s/AKfycbx4hjWwBaBGb0rlbD5HAwQhl3zI5tEfJV3T3_Dk5Xc_kULfRqfDs0ZSqYn721XnyRw8/exec";
 
-  function abreCadastroDeFuncionarios() {
-    document.getElementById('formularioDeCadastroDeFuncionario').style.display = 'block';
-    document.getElementById('divTabelaDeFuncionarios').style.display = 'none';
+  function abre_cadastro_de_estabelecimento() {
+    document.getElementById('formulario_de_cadastro').style.display = 'flex';
+    document.getElementById('div_abre_tabela_de_estabelecimentos').style.display = 'none';
+    document.getElementById('caixa_de_titulo1').style.display = 'block';
+    document.getElementById('caixa_de_titulo2').style.display = 'none';
+    document.getElementById('btn_cadastro').style.display = 'flex';
   }
 
-  function abreTabelaDeFuncionarios() {
-    document.getElementById('formularioDeCadastroDeFuncionario').style.display = 'none';
-    document.getElementById('divTabelaDeFuncionarios').style.display = 'block';
+  function abre_tabela_de_estabelecimentos() {
+    document.getElementById('formulario_de_cadastro').style.display = 'none';
+    document.getElementById('div_abre_tabela_de_estabelecimentos').style.display = 'block';
+    document.getElementById('caixa_de_titulo1').style.display = 'none';
+    document.getElementById('caixa_de_titulo2').style.display = 'block';
+    document.getElementById('btn_cadastro').style.display = 'none';
     lerDadosDaTabela();
   }
 
   function disparaAoClicar() {
-    var idDoFuncionario = document.getElementById('idDoFuncionario').value;
-    var nomeDoFuncionario = document.getElementById('nomeDoFuncionario').value;
-    var cargoDoFuncionario = document.getElementById('cargoDoFuncionario').value;
-    var salarioDoFuncionario = document.getElementById('salarioDoFuncionario').value;
+    var id_do_estabelecimento = document.getElementById('id_do_estabelecimento').value;
+    var nome_do_estabelecimento = document.getElementById('nome_do_estabelecimento').value;
+    var produto = document.getElementById('produto').value;
+    var chave = document.getElementById('chave').value;
+    var maquina = document.getElementById('maquina').value;
+    var endereco = document.getElementById('endereco').value;
+    var responsavel = document.getElementById('responsavel').value;
+    var contato = document.getElementById('contato').value;
+
 
     $.ajax({
       type: "POST",
       data: {
-        qualFuncao: 'entradaDeFuncionario',
-        idDoFuncionario: idDoFuncionario,
-        nomeDoFuncionario: nomeDoFuncionario,
-        cargoDoFuncionario: cargoDoFuncionario,
-        salarioDoFuncionario: salarioDoFuncionario,
+        qualFuncao: 'cadastrar_estabelecimento',
+        id_do_estabelecimento: id_do_estabelecimento,
+        nome_do_estabelecimento: nome_do_estabelecimento,
+        produto: produto,
+        chave: chave,
+        maquina: maquina,
+        endereco: endereco,
+        responsavel: responsavel,
+        contato: contato,
       },
       url: minhaUrl,
     }).done(function () {
-      document.getElementById('idDoFuncionario').value = "";
-      document.getElementById('nomeDoFuncionario').value = "";
-      document.getElementById('cargoDoFuncionario').value = "";
-      document.getElementById('salarioDoFuncionario').value = "";
-      alert("Funcionário Cadastrado Com Sucesso!")
+      document.getElementById('id_do_estabelecimento').value = "";
+      document.getElementById('nome_do_estabelecimento').value = "";
+      document.getElementById('produto').value = "";
+      document.getElementById('chave').value = "";
+      document.getElementById('maquina').value = "";
+      document.getElementById('endereco').value = "";
+      document.getElementById('responsavel').value = "";
+      document.getElementById('contato').value = "";
+      alert("Estabelecimento Cadastrado Com Sucesso!")
       location.reload();
     });
   }
@@ -124,7 +377,7 @@
     $.ajax({
       type: "POST",
       data: {
-        qualFuncao: 'lerFuncionarios',
+        qualFuncao: 'ler_estabelecimentos',
       },
       url: minhaUrl,
     }).done(function (data) {
@@ -149,15 +402,39 @@
       let table = new DataTable('#example');
 
       table.on('click', 'tbody tr', function () {
-        abreCadastroDeFuncionarios();
+        abre_cadastro_de_estabelecimento();
         let data = table.row(this).data();
+        console.log(data);
 
-        document.getElementById('idDoFuncionario').value = data[0];
-        document.getElementById('nomeDoFuncionario').value = data[1];
-        document.getElementById('cargoDoFuncionario').value = data[2];
-        document.getElementById('salarioDoFuncionario').value = data[3];
+        document.getElementById('id_do_estabelecimento').value = data[0];
+        document.getElementById('nome_do_estabelecimento').value = data[1];
+        document.getElementById('produto').value = data[2];
+        document.getElementById('chave').value = data[3];
+        document.getElementById('maquina').value = data[4];
+        document.getElementById('endereco').value = data[5];
+        document.getElementById('responsavel').value = data[6];
+        document.getElementById('contato').value = data[7];
       });
     });
+  }
+
+  function excluirEsteId() {
+    var id_do_estabelecimento = document.getElementById('id_do_estabelecimento').value;
+    if (id_do_estabelecimento == "") {
+      alert("Selecione um Estabelecimento a ser excluído")
+    } else {
+      $.ajax({
+        type: "POST",
+        data: {
+          qualFuncao: 'excluir_estabelecimento',
+          id_do_estabelecimento: id_do_estabelecimento,
+        },
+        url: minhaUrl,
+      }).done(function () {
+        alert("Estabelecimento Excluído Com Sucesso!")
+        location.reload();
+      });
+    }
   }
 </script>
 
