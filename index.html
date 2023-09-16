@@ -13,6 +13,18 @@
 </head>
 
 <body>
+
+  <div id="login">
+    <label for="id_do_usuario">Usuário</label>
+    <br>
+    <input id="id_do_usuario" type="text">
+    <br><br>
+    <label for="senha_do_usuario">Senha</label>
+    <input id="senha_do_usuario" type="password">
+    <br><br>
+    <button onclick="logar()" type="submit">Entrar</button>
+  </div>
+
   <div id="container_externo">
 
     <div id="div_logout">
@@ -23,7 +35,7 @@
     <div id="menuDeNavegacao">
       <button onclick="abre_cadastro_de_estabelecimento()">Formulário de Cadastro</button>
       <button onclick="abre_tabela_de_estabelecimentos()">Tabela de Funcionário</button>
-      <button onclick="()">Alterar Senha</button>
+      <!-- <button onclick="()">Alterar Senha</button> -->
     </div>
 
     <div id="caixa_de_titulo1">
@@ -76,7 +88,7 @@
     <div id="btn_cadastro">
       <button class="btn-green" onclick="disparaAoClicar()">LANÇAR</button>
       <button class="btn-red" onclick="excluirEsteId()">EXCLUIR</button>
-      <button class="btn-orange" onclick="()">ALTERAR</button>
+      <!-- <button class="btn-orange" onclick="()">ALTERAR</button> -->
     </div>
 
     <div id="caixa_de_titulo2">
@@ -314,7 +326,38 @@
 
 <script>
   var minhaUrl =
-    "https://script.google.com/macros/s/AKfycbx4hjWwBaBGb0rlbD5HAwQhl3zI5tEfJV3T3_Dk5Xc_kULfRqfDs0ZSqYn721XnyRw8/exec";
+    "https://script.google.com/macros/s/AKfycbwarknOvarWbr6JB8RRyHSrhZL7TUhEIXCmmQWlqeTSu1KIcK4U0GNrG7apD8Az6Cun/exec";
+
+  function logar() {
+    var dados_usuario = document.getElementById("id_do_usuario").value;
+    var senha_do_usuario = document.getElementById("senha_do_usuario").value;
+
+    document.cookie = 'dados_usuario=;';
+    document.cookie = 'senha_do_usuario=;';
+
+    document.cookie = 'dados_usuario=' + dados_usuario + ';';
+    document.cookie = 'senha_do_usuario=' + senha_do_usuario + ';';
+
+    let coockiSplit = document.cookie.split(';');
+
+    dados_usuario = coockiSplit[0].split('=')[1];
+    senha_do_usuario = coockiSplit[1].split('=')[1];
+
+    console.log("Usuário:" + " " + dados_usuario)
+    console.log("senha: " + " " + senha_do_usuario)
+
+    $.ajax({
+      type: "POST",
+      data: {
+        qualFuncao: 'autenticacao',
+        dados_usuario: dados_usuario,
+        senha_do_usuario: senha_do_usuario,
+      },
+      url: minhaUrl,
+    }).done(function (data) {
+      console.log(data);
+    });
+  }
 
   function abre_cadastro_de_estabelecimento() {
     document.getElementById('formulario_de_cadastro').style.display = 'flex';
